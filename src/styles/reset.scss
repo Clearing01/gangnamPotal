@@ -1,0 +1,181 @@
+@font-face {
+  font-family: 'NotoSansKR';
+  font-style: normal;
+  font-weight: 400;
+  src: url(../assets/fonts/NotoSansKR-Regular.woff2) format("woff2"),
+    url(../assets/fonts/NotoSansKR-Regular.woff) format("woff")
+}
+@font-face {
+  font-family: 'NotoSansKR';
+  font-style: normal;
+  font-weight: 500;
+  src: url(../assets/fonts/NotoSansKR-Medium.woff2) format("woff2"),
+    url(../assets/fonts/NotoSansKR-Medium.woff) format("woff")
+}
+@font-face {
+  font-family: 'NotoSansKR';
+  font-style: normal;
+  font-weight: 600;
+  src: url(../assets/fonts/NotoSansKR-Bold.woff2) format("woff2"),
+    url(../assets/fonts/NotoSansKR-Bold.woff) format("woff")
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 400;
+  src: url(../assets/fonts/Pretendard-Regular.woff2) format("woff2"),
+    url(../assets/fonts/Pretendard-Regular.woff) format("woff")
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 500;
+  src: url(../assets/fonts/Pretendard-Medium.woff2) format("woff2"),
+    url(../assets/fonts/Pretendard-Medium.woff) format("woff")
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 600;
+  src: url(../assets/fonts/Pretendard-SemiBold.woff2) format("woff2"),
+    url(../assets/fonts/Pretendard-SemiBold.woff) format("woff")
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 700;
+  src: url(../assets/fonts/Pretendard-Bold.woff2) format("woff2"),
+    url(../assets/fonts/Pretendard-Bold.woff) format("woff")
+}
+
+*:focus {
+  outline: none;
+}
+
+*, *:before, *:after {
+  -webkit-tap-highlight-color: transparent;
+  outline-style: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+// link
+a, a:hover, a:focus, a:link, a:visited, a:-webkit-any-link, a:link {
+  text-decoration: none;
+}
+
+/* list */
+ul,ol,li,dl,dt,dd{
+  list-style: none;
+}
+
+/* select, input, textarea, button */
+fieldset , select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+input {
+  font-family: $font-family;
+  &::placeholder{
+    color: $blue-gray-7;
+  }
+}
+
+input:active, input:focus, button:active, button:focus, select:active, select:focus, textarea:active, textarea:focus{
+  outline: none !important;
+}
+
+/* Chrome, Safari, Edge */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* 로그인 화면 input 배경색 자동 생김 제거 */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-transition: background-color 9999s ease-out;
+  -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+}
+
+textarea {
+  width: 100%;
+  height: calc(100% - 20px);
+  margin-top: 15px !important;
+  margin-bottom: 5px;
+  resize: none;
+  font-family: $font-family;
+  &::placeholder{
+    color: $blue-gray-7;
+  }
+}
+
+p {
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+  -webkit-margin-start: 0;
+  -webkit-margin-end: 0;
+}
+
+img {
+  -webkit-overflow-scrolling: touch;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+i {
+  font-style: normal;
+}
+
+*::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+*::-webkit-scrollbar-track {
+  background-color: $blue-gray-2;
+  :hover {
+    cursor: all-scroll;
+  }
+}
+*::-webkit-scrollbar-thumb {
+  background-color: $blue-gray-6;
+  border-radius: 999px;
+  background-clip: padding-box;
+}
+*::-webkit-scrollbar-corner {
+  background: $blue-gray-2;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  position:relative;
+}
+
+body {
+  -webkit-overflow-scrolling: touch;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  font-family: $font-family !important;
+  &.desktop{
+    min-width: 1440px;
+    overflow-y: hidden;
+    overflow-x: auto;
+  }
+}
+
