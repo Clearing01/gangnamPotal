@@ -14,6 +14,7 @@ const main = [
 		path: '/hr',
 		name: 'hr',
 		component: () => import('../pages/hr/index.vue'),
+		redirect: '/hr/management',
 		children: [...hr],
 		meta: {
 			title: '인사관리',

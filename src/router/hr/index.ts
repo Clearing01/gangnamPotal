@@ -1,6 +1,6 @@
 const hr = [
    {
-      path: '/hr/1',
+      path: '/hr/management',
       component: () => import('@/pages/hr/management/management.vue'),
       meta: {
          title: '인력',

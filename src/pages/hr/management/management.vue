@@ -39,7 +39,7 @@ const tableDataSet = ref({
 	},
 	
   ], // 테이블에 들어갈 데이터 --> 더미 데이터는 여기에
-  total: 0,
+  total: 10,
   isLoading: true,
   columnList: [   // 테이블 컬럼정보 정의 및 커스텀
   { name: "nameKr", align: "center", label: "이름", field: "nameKr", sortable: true },

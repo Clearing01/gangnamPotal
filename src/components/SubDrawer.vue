@@ -1,5 +1,6 @@
 <template>
   <q-menu
+    v-model="isShow"
     class="sub-menu-wrapper"
     fit
     anchor="top right"
@@ -24,16 +25,33 @@
   
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, computed } from "vue";
 import router from "@/router";
 
 const currentMenuList = ref([]);
 
-const props = defineProps({ parentMenu: Object });
-const parentMenu = computed(() => props.parentMenu.children);
+const props = defineProps({ parentMenu: Object ,showValue: Boolean});
+const parentMenu = computed(() => props.parentMenu?.children);
+const propShowValue = computed(() => props.showValue);
 
-const handlePageMove = (currentMenu) => {
+const isShow = ref(propShowValue.value);
+
+const mouseOver = (value : boolean) => {
+	// console.log(inputSubMenu)
+	// console.log(1,inputSubMenu.meta.isActive)
+	// inputSubMenu.meta.isActive = true;
+	// console.log(2,inputSubMenu.meta.isActive)
+	isShow.value = value;	
+}
+
+const mouseLeave = (value : boolean) => {
+  
+  isShow.value = value;
+
+}
+
+const handlePageMove = (currentMenu: any) => {
 		router.push(currentMenu.path);
 };
 
