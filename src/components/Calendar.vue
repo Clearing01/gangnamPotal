@@ -36,8 +36,6 @@ const calendarOptions = ref({
         right: 'prev,next'
   },
   dayMaxEventRows: 4,
-  moreLinkText: (arg) => `+${arg}`,
-  moreLinkClassNames: 'more-link',
   events: [
     {
       title: '박민호',
@@ -46,6 +44,7 @@ const calendarOptions = ref({
       end: '2023-01-07',
       display: 'list-item',
       name: '09:23',
+      eventContent: ''
     },
     {
       title: '정연호',
@@ -56,6 +55,7 @@ const calendarOptions = ref({
       name: '09:12',
     }
   ],
+  eventContent: '출근',
 })
 
 </script>
