@@ -1,82 +1,60 @@
 <template>
 	<q-list class="menu-list-wrapper">
 		<template v-for="(currentMenu, index) of menu" :key="index">
-			<q-item v-if="currentMenu.children"
+			<q-item
+				v-if="currentMenu.children"
 				side="left"
-				clickable  
+				clickable
 				class="menu-list-container menu-list-parents-wrapper"
 				@click="handlePageMove(currentMenu)"
-				@mouseenter="mouseOver(true)"
-				@mouseleave="mouseLeave(false)"
+				@mouseenter="showSubMenu(currentMenu, true)"
+				@mouseleave="showSubMenu(currentMenu, false)"
 			>
 				<q-item-section class="menu-list-section">
 					<q-item-label>
 						{{ currentMenu.meta.title }}
 					</q-item-label>
 				</q-item-section>
-				<div v-if="currentMenu.children">
-					{{ showValue }}
-				</div>
 				<SubDrawer
-					v-if="currentMenu.children && showValue" 
-					@mouseenter="mouseOver(true)"
-					@mouseleave="mouseLeave(false)"
+					v-if="currentMenu.showSubMenu"
+					@mouseenter="showSubMenu(currentMenu, true)"
+					@mouseleave="showSubMenu(currentMenu, false)"
 					:parentMenu="currentMenu"
-					:showValue="showValue"
+					:isShow="currentMenu.showSubMenu"
 				/>
 			</q-item>
 
-			<q-item
-				v-else 
-				side="left"
-				clickable  
-				class="menu-list-container menu-list-parents-wrapper"
-				@click="handlePageMove(currentMenu)"
-			>
+			<q-item v-else side="left" clickable class="menu-list-container menu-list-parents-wrapper" @click="handlePageMove(currentMenu)">
 				<q-item-section class="menu-list-section">
 					<q-item-label>
 						{{ currentMenu.meta.title }}
 					</q-item-label>
 				</q-item-section>
-				<div v-if="currentMenu.children">
-					{{ showValue }}
-				</div>
 			</q-item>
 		</template>
 	</q-list>
 </template>
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { ref } from 'vue';
 import router from '@/router';
 import main from '@/router/main';
-import { Router } from 'vue-router';
-import SubDrawer from "@/components/SubDrawer.vue";
+import SubDrawer from '@/components/SubDrawer.vue';
+import { debounce } from 'lodash-es';
 
-let closeAllTimer:any = null;
+const menu = ref(
+	main.map((menu: object) => ({
+		...menu,
+		showSubMenu: false,
+	}))
+);
 
-const menu = main;
-const showValue = ref(false)
-
-
-const handlePageMove = (currentMenu : any) => { 
-		router.push(currentMenu.path);
+const handlePageMove = (currentMenu: any) => {
+	router.push(currentMenu.path);
 };
 
-const mouseOver = (value : boolean) => {
-	clearTimeout(closeAllTimer);
-	showValue.value = value;	
-}
-
-const mouseLeave = (value : boolean) => {
-  showValue.value = value;
-  closeAllTimer = setTimeout(() => inactiveAll(), 200);
-}
-
-const inactiveAll = () => {
-
-}
+const showSubMenu = debounce((currentMenu: any, value: boolean) => {
+	currentMenu.showSubMenu = value;
+}, 100);
 </script>
-<style lang="scss" scoped>
 
-</style>
-
+<style lang="scss" scoped></style>

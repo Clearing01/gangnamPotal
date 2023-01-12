@@ -1,11 +1,7 @@
 <template>
-  <router-view />
+	<router-view />
 </template>
 
-<script setup>
+<script setup></script>
 
-</script>
-
-<style>
-
-</style>
+<style></style>
